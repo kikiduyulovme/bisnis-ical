@@ -264,7 +264,6 @@
 </div>
 
 <script>
-    // ⚠️ GANTI LINK DI BAWAH INI DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA SEBELUM DI-UPLOAD
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyPobCaZ97t5Jl7OEPUnuEd7ckkvUE3fF2qs5WDipa5rG5FIQThCU1FAgo7hrZpMA4R/exec";
 
     let appData = { dashboard: { modal: 0, mulai: '', sampai: '' }, pembelian: [], penjualan: [], operasional: [] };
@@ -281,7 +280,7 @@
     function toggleLoading(show) { document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none'; }
 
     async function loadDataFromCloud() {
-        if(SCRIPT_URL === "https://script.google.com/macros/s/AKfycbyPobCaZ97t5Jl7OEPUnuEd7ckkvUE3fF2qs5WDipa5rG5FIQThCU1FAgo7hrZpMA4R/exec") return;
+        // Kode pengaman if sudah dihapus di sini
         toggleLoading(true);
         try {
             let res = await fetch(SCRIPT_URL + "?action=read");
@@ -298,9 +297,7 @@
     }
 
     async function syncToCloud() {
-        if(SCRIPT_URL === "https://script.google.com/macros/s/AKfycbyPobCaZ97t5Jl7OEPUnuEd7ckkvUE3fF2qs5WDipa5rG5FIQThCU1FAgo7hrZpMA4R/exec") {
-            alert("Aplikasi belum terhubung ke Google Sheets."); return;
-        }
+        // Kode pengaman if alert juga sudah dihapus di sini
         toggleLoading(true);
         try {
             await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(appData) });
